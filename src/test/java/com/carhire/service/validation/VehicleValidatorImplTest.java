@@ -3,12 +3,12 @@ package com.carhire.service.validation;
 import com.carhire.model.Vehicle;
 import com.carhire.model.VehicleCategory;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class VehicleValidatorImplTest {
 
     private final VehicleValidator validator = new VehicleValidatorImpl();
-
 
 
     @Test
@@ -39,7 +39,6 @@ class VehicleValidatorImplTest {
         Vehicle nullNumber = new Vehicle(null, "Ford", "Focus", VehicleCategory.STANDARD, 100.0, 0);
         assertFalse(validator.isValid(nullNumber));
     }
-
 
 
     @Test

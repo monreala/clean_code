@@ -1,57 +1,40 @@
 package com.carhire.service.reader;
 
 import com.carhire.model.Customer;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerCsvReader implements CustomerReader {
 
-    private static final String CSV_DELIMITER = ";";
+    private static final String ROW_TYPE = "CUSTOMER";
+    private static final int EXPECTED_FIELDS = 5;
 
     @Override
     public List<Customer> readCustomers(String filePath) {
         List<Customer> customers = new ArrayList<>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            boolean isHeader = true;
-
-            while ((line = br.readLine()) != null) {
-                if (isHeader) {
-                    isHeader = false;
-                    continue;
-                }
-
-                Customer customer = parseLineToCustomer(line);
-                if (customer != null) {
-                    customers.add(customer);
-                }
+        for (String[] row : CsvRowReader.readRowsOfType(filePath, ROW_TYPE)) {
+            Customer customer = parseRow(row);
+            if (customer != null) {
+                customers.add(customer);
             }
-        } catch (IOException e) {
-            throw new RuntimeException("Ошибка при чтении CSV-файла: " + e.getMessage(), e);
         }
-
         return customers;
     }
 
-    private Customer parseLineToCustomer(String line) {
+    private Customer parseRow(String[] fields) {
+        if (fields.length < EXPECTED_FIELDS) {
+            System.err.println("Пропущена некорректная строка CUSTOMER (мало полей)");
+            return null;
+        }
         try {
-            String[] data = line.split(CSV_DELIMITER);
-            if (data.length < 4) {
-                return null;
-            }
-
-            String id = data[0].trim();
-            String fullName = data[1].trim();
-            int age = Integer.parseInt(data[2].trim());
-            int experience = Integer.parseInt(data[3].trim());
-
+            String id = fields[1].trim();
+            String fullName = fields[2].trim();
+            int age = Integer.parseInt(fields[3].trim());
+            int experience = Integer.parseInt(fields[4].trim());
             return new Customer(id, fullName, age, experience);
-        } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-            System.err.println("Пропущена некорректная строка в CSV: " + line);
+        } catch (NumberFormatException e) {
+            System.err.println("Пропущена некорректная строка CUSTOMER: " + String.join(";", fields));
             return null;
         }
     }

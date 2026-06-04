@@ -2,12 +2,12 @@ package com.carhire.service.validation;
 
 import com.carhire.model.Customer;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CustomerValidatorImplTest {
 
     private final CustomerValidator validator = new CustomerValidatorImpl();
-
 
 
     @Test
@@ -46,7 +46,6 @@ class CustomerValidatorImplTest {
     }
 
 
-
     @Test
     void isYoungOrInexperienced_AgeUnder25_ReturnsTrue() {
         Customer young = new Customer("6", "Alex", 20, 5);
@@ -54,9 +53,15 @@ class CustomerValidatorImplTest {
     }
 
     @Test
-    void isYoungOrInexperienced_ExperienceUnder3_ReturnsTrue() {
-        Customer inexperienced = new Customer("7", "Bob", 30, 1);
+    void isYoungOrInexperienced_ExperienceUnder5_ReturnsTrue() {
+        Customer inexperienced = new Customer("7", "Bob", 30, 4);
         assertTrue(validator.isYoungOrInexperienced(inexperienced));
+    }
+
+    @Test
+    void isYoungOrInexperienced_ExperienceExactly5AndOlder_ReturnsFalse() {
+        Customer borderline = new Customer("9", "Eve", 25, 5);
+        assertFalse(validator.isYoungOrInexperienced(borderline));
     }
 
     @Test

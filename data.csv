@@ -1,0 +1,23 @@
+# Формат:
+# CUSTOMER;<id>;<fullName>;<age>;<drivingExperienceYears>
+# VEHICLE;<regNumber>;<brand>;<model>;<category>;<baseDailyRate>;<mileageSinceLastService>
+# BOOKING;<bookingId>;<customerId>;<vehicleRegNumber>;<rentDays>
+
+CUSTOMER;C1;Alice Smith;30;8
+CUSTOMER;C2;Bob Jones;22;2
+CUSTOMER;C3;Carol Brown;45;20
+CUSTOMER;C4;Dave Wilson;17;0
+CUSTOMER;C5;Eve Davis;35;12
+
+VEHICLE;V1;Ford;Focus;STANDARD;80.0;1000
+VEHICLE;V2;BMW;X5;PREMIUM;250.0;5000
+VEHICLE;V3;Toyota;Corolla;ECONOMY;50.0;500
+VEHICLE;V4;Land Rover;Discovery;SUV;180.0;14000
+VEHICLE;V5;Audi;A6;PREMIUM;220.0;20000
+
+BOOKING;B1;C1;V1;5
+BOOKING;B2;C3;V2;14
+BOOKING;B3;C5;V3;3
+BOOKING;B4;C2;V4;7
+BOOKING;B5;C4;V5;10
+BOOKING;B6;C2;V2;3

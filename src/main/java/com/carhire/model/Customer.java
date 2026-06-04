@@ -1,10 +1,10 @@
 package com.carhire.model;
 
 public class Customer {
-    private String id;
-    private String fullName;
-    private int age;
-    private int drivingExperienceYears;
+    private final String id;
+    private final String fullName;
+    private final int age;
+    private final int drivingExperienceYears;
 
     public Customer(String id, String fullName, int age, int drivingExperienceYears) {
         this.id = id;
@@ -29,5 +29,15 @@ public class Customer {
         return drivingExperienceYears;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Customer other)) return false;
+        return id != null && id.equals(other.id);
+    }
 
+    @Override
+    public int hashCode() {
+        return id == null ? 0 : id.hashCode();
+    }
 }

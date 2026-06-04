@@ -1,5 +1,9 @@
 package com.carhire.importing;
 
+import com.carhire.model.Customer;
+
+import java.util.List;
+
 public interface CustomerImportService {
-    void importValidCustomer(String filePath);
+    List<Customer> importValidCustomer(String filePath);
 }

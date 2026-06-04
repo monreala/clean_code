@@ -30,7 +30,6 @@ class BookingValidatorImplTest {
     private final Vehicle standardVehicle = new Vehicle("A1", "Ford", "Focus", VehicleCategory.STANDARD, 100, 0);
 
 
-
     @Test
     void isValid_NullBooking_ReturnsFalse() {
         assertFalse(bookingValidator.isValid(null));
@@ -47,7 +46,6 @@ class BookingValidatorImplTest {
         Booking negativeDaysBooking = new Booking("B2", validCustomer, standardVehicle, -5);
         assertFalse(bookingValidator.isValid(negativeDaysBooking));
     }
-
 
 
     @Test

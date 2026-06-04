@@ -39,7 +39,6 @@ class PriceCalculatorImplTest {
     }
 
 
-
     @Test
     void calculateTotalCost_InvalidBooking_ThrowsException() {
         Booking invalidBooking = new Booking("B1", defaultCustomer, null, 5);
@@ -50,7 +49,6 @@ class PriceCalculatorImplTest {
             priceCalculator.calculateTotalPrice(invalidBooking);
         });
     }
-
 
 
     @Test
@@ -86,7 +84,6 @@ class PriceCalculatorImplTest {
     }
 
 
-
     @Test
     void calculateTotalCost_YoungDriver_Adds20PercentFee() {
         Booking booking = createBookingWithCategory(VehicleCategory.ECONOMY);
@@ -102,7 +99,6 @@ class PriceCalculatorImplTest {
 
         assertEquals(85.0, priceCalculator.calculateTotalPrice(booking));
     }
-
 
 
     private Booking createBookingWithCategory(VehicleCategory category) {

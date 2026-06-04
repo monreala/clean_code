@@ -1,19 +1,21 @@
 package com.carhire.service.validation;
+
 import com.carhire.model.Customer;
+
 public class CustomerValidatorImpl implements CustomerValidator {
     @Override
     public boolean isValid(Customer customer) {
-        if(customer == null) {
+        if (customer == null) {
             return false;
         }
-        return isAgeValid(customer.getAge())&&
-                isExperiencedValid(customer.getDrivingExperienceYears())&&
+        return isAgeValid(customer.getAge()) &&
+                isExperiencedValid(customer.getDrivingExperienceYears()) &&
                 isNameValid(customer.getFullName());
     }
 
     @Override
     public boolean isYoungOrInexperienced(Customer customer) {
-        return customer.getAge() <25 || customer.getDrivingExperienceYears() < 5;
+        return customer.getAge() < 25 || customer.getDrivingExperienceYears() < 5;
     }
 
     private boolean isAgeValid(int age) {
