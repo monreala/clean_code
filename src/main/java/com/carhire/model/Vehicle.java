@@ -7,6 +7,7 @@ public class Vehicle {
     private VehicleCategory category;
     private double baseDailyRate;
     private int mileageSinceLastService;
+
     public Vehicle(String regNumber, String brand, String model, VehicleCategory category, double baseDailyRate, int mileageSinceLastService) {
         this.regNumber = regNumber;
         this.brand = brand;
@@ -16,18 +17,27 @@ public class Vehicle {
         this.mileageSinceLastService = mileageSinceLastService;
     }
 
-    public boolean isNeedsMaintenance(){
-        return mileageSinceLastService >= 15000;
+    public String getRegNumber() {
+        return regNumber;
     }
-    public void performMaintenance(){
-        this.mileageSinceLastService = 0;
+    public String getBrand() {
+        return brand;
     }
-    public boolean isValid (){
-        return baseDailyRate > 0.0 && regNumber !=null && !regNumber.trim().isEmpty();
+    public String getModel() {
+        return model;
     }
-    public String getRegNumber() { return regNumber; }
-    public VehicleCategory getCategory() { return category; }
-    public double getBaseDailyRate() { return baseDailyRate; }
-    public int getMileageSinceLastService() { return mileageSinceLastService; }
+    public VehicleCategory getCategory() {
+        return category;
+    }
+    public double getBaseDailyRate() {
+        return baseDailyRate;
+    }
+    public int getMileageSinceLastService() {
+        return mileageSinceLastService;
+    }
 
+
+    public void setMileageSinceLastService(int mileageSinceLastService) {
+        this.mileageSinceLastService = mileageSinceLastService;
+    }
 }

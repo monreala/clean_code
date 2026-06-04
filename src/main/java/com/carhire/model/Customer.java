@@ -12,15 +12,22 @@ public class Customer {
         this.age = age;
         this.drivingExperienceYears = drivingExperienceYears;
     }
-    public String getId() { return id; }
-    public String getFullName() { return fullName; }
-    public int getAge() { return age; }
-    public int getDrivingExperienceYears() { return drivingExperienceYears; }
 
-    public boolean isValid(){
-       return age>= 18 && drivingExperienceYears >= 0 && fullName!=null && !fullName.trim().isEmpty();
+    public String getId() {
+        return id;
     }
-    public boolean isYoungOrInexperiencedDriver(){
-        return age < 25 || drivingExperienceYears < 3;
+
+    public String getFullName() {
+        return fullName;
     }
+
+    public int getAge() {
+        return age;
+    }
+
+    public int getDrivingExperienceYears() {
+        return drivingExperienceYears;
+    }
+
+
 }
